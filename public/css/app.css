@@ -16819,6 +16819,10 @@ a.text-dark:focus {
   }
 }
 
+.bz-navbar .nav-link {
+  color: white !important;
+}
+
 .card-header {
   padding: 0.5em 1.25em;
 }

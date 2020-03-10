@@ -34,7 +34,17 @@
             @yield('siteheader')
         </div>
         <div class="container-fluid mt-2">
-            @yield('content')
+            <div class="row">
+                <div class="col-md-2">
+                    @yield('left-side')
+                </div>
+                <div class="col-md-7">
+                    @yield('content')
+                </div>
+                <div class="col-md-3">
+                    @yield('right-side')
+                </div>
+            </div>
         </div>
     </div>
     @stack('scripts')

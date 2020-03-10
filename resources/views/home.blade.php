@@ -1,15 +1,20 @@
 @extends('layouts.app')
 
+@section('left-side')
+    @include('layouts.leftside')
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('posts.create_post') }}</div>
-                <div class="card-body">
-                </div>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <post-editor button-text="{{ __('posts.save') }}"
+                     header="{{ __('posts.create_post') }}"
+                     placeholder="{{ __('posts.placeholder') }}">
+        </post-editor>
     </div>
 </div>
+@endsection
+
+@section('right-side')
+    @include('layouts.rightside')
 @endsection

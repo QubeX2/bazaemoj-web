@@ -13,6 +13,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.bz-navbar .nav-link {
+    color: white !important;
+}
+
 .card-header {
     padding: 0.5em 1.25em;
 }
