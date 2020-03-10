@@ -3,11 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Lang;
-use App\BzTag;
 
-class CreateBzTags extends Migration
+class CreateBzPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -16,16 +13,17 @@ class CreateBzTags extends Migration
      */
     public function up()
     {
-        Schema::create('bz_tags', function (Blueprint $table) {
+        Schema::create('bz_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('userid')->index();
-            $table->string('name');
-            $table->integer('type')->index();
-            $table->integer('sign')->index();
-            $table->char('color', 7); // #RRGGBB
+            $table->text('post');
+            $table->string('behaviour_problems', 1024);
+            $table->string('helpful_behaviour', 1024);
+            $table->string('short_term', 1024);
+            $table->string('long_term', 1024);
+            $table->unsignedInteger('exercise_minutes');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -35,6 +33,6 @@ class CreateBzTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bz_tags');
+        Schema::dropIfExists('bz_posts');
     }
 }

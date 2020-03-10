@@ -21,7 +21,16 @@
 <body>
     <div id="app">
         @include('layouts.menu')
-        <div class="container-fluid mt-2" id="siteheader">
+        <div id="messages" class="container-fluid mt-2">
+            @if (isset($messages) && $messages->count() > 0)
+                @foreach($messages as $message)
+                    <div class="alert {{$message->class}}" role="alert">
+                        {{ $message->text }}
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div id="siteheader" class="container-fluid mt-2">
             @yield('siteheader')
         </div>
         <div class="container-fluid mt-2">

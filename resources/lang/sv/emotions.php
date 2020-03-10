@@ -3,19 +3,19 @@
 return [
     'positive' => [
         // yellow
-        'serenity' => '',
-        'joy' => '',
-        'ecstasy' => '',
+        'serenity' => 'lugn',
+        'joy' => 'glädje',
+        'ecstasy' => 'extas',
 
         // light green
-        'acceptance' => '',
-        'trust' => '',
-        'admiration' => '',
+        'acceptance' => 'accepterande',
+        'trust' => 'förtroende',
+        'admiration' => 'beundran',
 
         // orange
-        'interest' => '',
-        'anticipation' => '',
-        'vigilance' => '',
+        'interest' => 'intresse',
+        'anticipation' => 'förväntan',
+        'vigilance' => 'vaksamhet',
     ],
 
     'negative' => [
@@ -26,24 +26,24 @@ return [
 
         // blue
         'pensiveness' => 'fundersamhet',
-        'sadness' => '',
-        'grief' => '',
+        'sadness' => 'ledsen',
+        'grief' => 'sorg',
 
         // light red
-        'boredom' => '',
-        'disgust' => '',
-        'loathing' => '',
+        'boredom' => 'tristess',
+        'disgust' => 'avsmak',
+        'loathing' => 'avsky',
 
         // red
-        'annoyance' => '',
-        'anger' => '',
-        'rage' => '',
+        'annoyance' => 'irritation',
+        'anger' => 'ilska',
+        'rage' => 'ursinne',
     ],
 
     'neutral' => [
         // light blue
-        'distraction' => '',
-        'surprise' => '',
-        'amazement' => '',
+        'distraction' => 'förvirring',
+        'surprise' => 'förvåning',
+        'amazement' => 'häpnad',
     ],
 ];

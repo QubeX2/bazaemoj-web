@@ -8,32 +8,32 @@
     <form action="{{ route('tags.store') }}" method="POST">
         @csrf
         <div class="card">
-            <div class="card-header h5 font-weight-bold">{{ __('messages.add_tag') }}</div>
+            <div class="card-header h5 font-weight-bold">{{ __('tags.add_tag') }}</div>
             <div class="card-body">
                 <div class="row form-group">
                     <div class="col-md-2">
-                        <label for="id-name">{{ __('messages.tag_name') }}</label>
+                        <label for="id-name">{{ __('tags.tag_name') }}</label>
                         <input id="id-name" type="text" name="name" class="form-control">
                     </div>
                     <div class="col-md-2">
-                        <label for="id-type">{{ __('messages.tag_type') }}</label>
+                        <label for="id-type">{{ __('tags.tag_type') }}</label>
                         <select id="id-type" class="form-control" name="type">
-                            <option value="1">{{ __('messages.emotion') }}</option>
-                            <option value="2">{{ __('messages.event') }}</option>
+                            <option value="1">{{ __('tags.emotion') }}</option>
+                            <option value="2">{{ __('tags.event') }}</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label for="id-sign">{{ __('messages.tag_sign') }}</label>
+                        <label for="id-sign">{{ __('tags.tag_sign') }}</label>
                         <select id="id-sign" class="form-control">
-                            <option value="0">{{ __('messages.neutral') }}</option>
-                            <option value="1">{{ __('messages.positive') }}</option>
-                            <option value="-1">{{ __('messages.negative') }}</option>
+                            <option value="0">{{ __('tags.neutral') }}</option>
+                            <option value="1">{{ __('tags.positive') }}</option>
+                            <option value="-1">{{ __('tags.negative') }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2">
-                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> Lägg till</button>
+                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> {{ __('messages.add') }}</button>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Lang;
 
 class BzTag extends Model
 {
@@ -10,6 +11,11 @@ class BzTag extends Model
 
     const TYPE_EMOTION = 1;
     const TYPE_EVENT = 2;
+    const TYPE_VULNERABILITY = 3;
+    const TYPE_SELF_HARM = 4;
+    const TYPE_SUICIDAL = 5;
+    const TYPE_DRUG_ABUSE = 6;
+    const TYPE_DESTRUCTIVE_BEHAVIOUR = 7;
 
     const SIGN_NEUTRAL = 0;
     const SIGN_POSITIVE = 1;
@@ -37,16 +43,89 @@ class BzTag extends Model
         'sadness' => '#87ceeb',
         'grief' => '#1e90ff',
         // light red
-        'boredom' => '#ffa07a',
-        'disgust' => '#fa8072',
-        'loathing' => '#ff0000',
+        'boredom' => '#ffc09c',
+        'disgust' => '#fbc083',
+        'loathing' => '#ff8855',
         // red
-        'annoyance' => '#dc143c',
-        'anger' => '#b22222',
-        'rage' => '#8b0000',
+        'annoyance' => '#ff7777',
+        'anger' => '#ff4444',
+        'rage' => '#ff0000',
         // light blue
         'distraction' => '#e0ffff',
         'surprise' => '#afeeee',
         'amazement' => '#87cefa',
     ];
+
+    public static function createSystemDefaults()
+    {
+        $systemTags = [
+            (object)[
+                'name' => __('flags.problems.destructive_behaviour'),
+                'type' => BzTag::TYPE_DESTRUCTIVE_BEHAVIOUR,
+            ],
+            (object)[
+                'name' => __('flags.problems.drug_abuse'),
+                'type' => BzTag::TYPE_DRUG_ABUSE,
+            ],
+            (object)[
+                'name' => __('flags.problems.self_harm'),
+                'type' => BzTag::TYPE_SELF_HARM,
+            ],
+            (object)[
+                'name' => __('flags.problems.suicidal'),
+                'type' => BzTag::TYPE_SUICIDAL,
+            ],
+        ];
+
+        foreach($systemTags as $tag) {
+            BzTag::create([
+                'userid' => 0,
+                'name' => $tag->name,
+                'type' => $tag->type,
+                'sign' => BzTag::SIGN_NEUTRAL,
+                'color' => '',
+            ]);
+        }
+
+        foreach(Lang::get('flags.vulnerabilities') as $key => $emotion) {
+            BzTag::create([
+                'userid' => 0,
+                'name' => __('flags.vulnerabilities.'.$key),
+                'type' => BzTag::TYPE_VULNERABILITY,
+                'sign' => BzTag::SIGN_NEUTRAL,
+                'color' => '',
+            ]);
+        }
+    }
+
+    public static function createUserDefaults(User $user)
+    {
+        foreach(Lang::get('emotions.positive') as $key => $emotion) {
+            BzTag::create([
+                'userid' => $user->id,
+                'name' => __('emotions.positive.'.$key),
+                'type' => BzTag::TYPE_EMOTION,
+                'sign' => BzTag::SIGN_POSITIVE,
+                'color' => self::EMOTION_COLORS[$key],
+            ]);
+        }
+        foreach(Lang::get('emotions.negative') as $key => $emotion) {
+            BzTag::create([
+                'userid' => $user->id,
+                'name' => __('emotions.negative.'.$key),
+                'type' => BzTag::TYPE_EMOTION,
+                'sign' => BzTag::SIGN_NEGATIVE,
+                'color' => self::EMOTION_COLORS[$key],
+            ]);
+        }
+        foreach(Lang::get('emotions.neutral') as $key => $emotion) {
+            BzTag::create([
+                'userid' => $user->id,
+                'name' => __('emotions.neutral.'.$key),
+                'type' => BzTag::TYPE_EMOTION,
+                'sign' => BzTag::SIGN_NEUTRAL,
+                'color' => self::EMOTION_COLORS[$key],
+            ]);
+        }
+    }
 }

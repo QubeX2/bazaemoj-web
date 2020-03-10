@@ -12,3 +12,23 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.card-header {
+    padding: 0.5em 1.25em;
+}
+
+$wp: 5;
+@while $wp <= 100 {
+    .bz-w#{$wp} {
+        width: #{$wp}#{'%'}
+    }
+    $wp: $wp + 5;
+}
+
+$we: 5;
+@while $we <= 100 {
+    .bz-w#{$we}m {
+        width: #{$we}em
+    }
+    $we: $we + 5;
+}
