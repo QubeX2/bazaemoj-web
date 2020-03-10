@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sitetitle = __('messages.home');
+        return view('home', compact('sitetitle'));
     }
 }

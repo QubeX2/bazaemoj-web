@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ (isset($sitetitle) ? $sitetitle . ' - ' : '') . 'BAZAEMOJ' }}</title>
+    <title>{{ (isset($sitetitle) ? $sitetitle . ' - ' : '') . 'EMOIARY' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
