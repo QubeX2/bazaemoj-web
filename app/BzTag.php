@@ -16,6 +16,7 @@ class BzTag extends Model
     const TYPE_SUICIDAL = 5;
     const TYPE_DRUG_ABUSE = 6;
     const TYPE_DESTRUCTIVE_BEHAVIOUR = 7;
+    const TYPE_HELPFUL_BEHAVIOUR = 8;
 
     const SIGN_NEUTRAL = 0;
     const SIGN_POSITIVE = 1;
@@ -82,6 +83,16 @@ class BzTag extends Model
                 'userid' => 0,
                 'name' => $tag->name,
                 'type' => $tag->type,
+                'sign' => BzTag::SIGN_NEUTRAL,
+                'color' => '',
+            ]);
+        }
+
+        foreach(Lang::get('flags.helpful') as $key => $emotion) {
+            BzTag::create([
+                'userid' => 0,
+                'name' => __('flags.helpful.'.$key),
+                'type' => BzTag::TYPE_HELPFUL_BEHAVIOUR,
                 'sign' => BzTag::SIGN_NEUTRAL,
                 'color' => '',
             ]);

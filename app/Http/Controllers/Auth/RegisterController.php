@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\BzTag;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -50,8 +51,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:16', 'unique:users'],
+            'alias' => ['required', 'string', 'max:16', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,10 +68,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            // 'name' => $data['name'],
+            // 'email' => $data['email'],
+            'name' => $data['username'],
+            'email' => '',
+            'username' => $data['username'],
+            'alias' => $data['alias'],
             'password' => Hash::make($data['password']),
         ]);
+
+        BzTag::createUserDefaults($user);
+
         return $user;
     }
 }

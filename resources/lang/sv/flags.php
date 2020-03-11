@@ -17,5 +17,9 @@ return [
         'destructive_behaviour' => 'detruktivt beteende'
     ],
 
-
+    'helpful' => [
+        'mindfulness' => 'mindfulness',
+        'stop' => 'stopp',
+        'analyze' => 'analys',
+    ],
 ];
