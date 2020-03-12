@@ -9,10 +9,9 @@ return [
     // register
     'register' => 'Registrera dig',
     'username' => 'Användarnamn',
-    'alias' => 'Alias (anonymt visningsnamn)',
     'password' => 'Lösenord',
     'confirm' => 'Verifiera lösenord',
     'information' => 'Information',
-    'anonymous_message' => 'Denna sajt vill värna om din anonymitet. Välj därför bara ett användarnamn och ett alias som du anser är anonymt för dig!',
-
+    'anonymous_message' => 'Denna sajt vill värna om din anonymitet. Välj därför bara ett användarnamn och ett alias som du anser är anonymt för dig! E-postadressen används enbart för att kunna återställa ett förlorat lösenord.',
+    'email' => 'E-postadress',
 ];

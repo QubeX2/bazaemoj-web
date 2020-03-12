@@ -14,7 +14,6 @@ class AddFieldsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('alias')->after('password');
             $table->string('username')->after('name');
         });
     }
@@ -27,7 +26,6 @@ class AddFieldsToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('alias');
             $table->dropColumn('username');
         });
     }
